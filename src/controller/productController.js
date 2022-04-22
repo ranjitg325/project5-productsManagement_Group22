@@ -229,7 +229,7 @@ const productCreate = async function (req, res) {
 
     try {
         let productId=req.params.productId
-        if(!isValidvalue(productId)){
+        if(!isValidObjectId(productId)){
             return res.status(400).send({status:false,msg:"product id is not valid"})
         }
         const getproducts=await productModel.findById({_id:productId})
@@ -383,7 +383,7 @@ module.exports.updatedProductById = updatedProductById
 const deleteproductById = async function (req, res) {
     try {
         let productId = req.params.productId
-        if (!isValidvalue(productId)) {
+        if (!isValidObjectId(productId)) {
             return res.status(400).send({ status: false, msg: "need valid productid in the params" })
         }
         const productwithId = await productModel.findById({ _id: productId })
